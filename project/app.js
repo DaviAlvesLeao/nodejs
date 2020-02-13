@@ -1,22 +1,15 @@
-const express = require('express');
-const app = express();
+const app = require("./config/server");
 
-app.set('view engine', 'ejs');
+const route_home = require("./app/routes/home");
+route_home(app);
 
-app.get('/', function(req,res){
-    res.render("home/index");
-});
+const route_form_add = require("./app/routes/form_add_noticia");
+route_form_add(app);
 
-app.get('/form_add_noticia', function(req,res){
-    res.render('admin/form_add_noticia');
-});
-
-app.get('/noticias', function(req,res){
-    res.render('noticias/noticias');
-});
+const route_noticias = require("./app/routes/noticias");
+route_noticias(app);
 
 
-
-app.listen (3000, function(){
+app.listen(3000, function () {
     console.log("Servidor rodando com Express");
 });
