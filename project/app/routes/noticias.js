@@ -1,15 +1,19 @@
-const db = require('../../config/db');
+// const db = require('../../config/db');
 
 module.exports = function (app) {
     app.get('/noticias', function (req, res) {
 
-        const connection = db();
 
-        connection.query("SELECT * FROM npticias", function (error, result) {
+        const connection = app.config.db();
 
-            res.render('noticias/noticias', {noticias: result});
-        });
+        connection.query("SELECT * FROM noticias;", function (error, result) {
 
-        //
+             res.render('noticias/noticias', {noticias: result});
+             //res.send(result);
+          });
+
+
     });
+
+
 };
