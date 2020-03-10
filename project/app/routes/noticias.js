@@ -5,15 +5,13 @@ module.exports = function (app) {
 
 
         const connection = app.config.db();
+        const noticiasModel = app.app.models.noticiasModel;
 
-        connection.query("SELECT * FROM noticias;", function (error, result) {
+        noticiasModel.getNoticias(connection, function (error, result) {
 
-             res.render('noticias/noticias', {noticias: result});
-             //res.send(result);
-          });
-
-
+            res.render('noticias/noticias', {noticias: result});
+            //res.send(result);
+        });
     });
-
 
 };
