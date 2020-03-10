@@ -5,9 +5,9 @@ module.exports = function (app) {
 
 
         const connection = app.config.db();
-        const noticiasModel = app.app.models.noticiasModel;
+        const noticiasModel = new app.app.models.NoticiasDAO(connection);
 
-        noticiasModel.getNoticias(connection, function (error, result) {
+         noticiasModel.getNoticias(function (error, result) {
 
             res.render('noticias/noticias', {noticias: result});
             //res.send(result);
@@ -15,3 +15,18 @@ module.exports = function (app) {
     });
 
 };
+
+
+// module.exports = function(application){
+//
+//     application.get('/noticias', function(req,res){
+//
+//         var connection = application.config.dbConnection();
+//         var noticiasModel = new application.app.models.NoticiasDAO(connection);
+//
+//         noticiasModel.getNoticias(function(error, result){
+//             res.render('noticias/noticias', { noticias : result });
+//         });
+//
+//     });
+// }
