@@ -9,7 +9,7 @@ module.exports = function (app) {
         //conn
         const connection = app.config.db();
         //model
-        const noticiasDAO = new app.app.models.noticiasDAO(connection);
+        const noticiasDAO = new app.app.models.NoticiasDAO(connection);
 
         //salvarNoticia
         noticiasDAO.saveNoticia(noticias, function (error, result) {
